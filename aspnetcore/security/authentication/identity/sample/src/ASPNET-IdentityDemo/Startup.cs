@@ -64,6 +64,12 @@ namespace IdentityDemo
                 // Cookie settings
                 options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
                 options.Cookies.ApplicationCookie.LoginPath = "/Account/LogIn";
+                // If the LogOff method in the AccountController returns a RedirectToAction 
+                // that sends the user to the HomeController's Index method, the LogoutPath 
+                // setting here isn't honored. To enforce the LogoutPath, use 
+                // "return new EmptyResult();" in the LogOff method and include 
+                // asp-route-returnUrl="/" on the <form> tag in _LoginPartial.cshtml where 
+                // the Log out button appears.
                 options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
 
                 // User settings
